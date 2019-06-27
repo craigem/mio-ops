@@ -12,14 +12,14 @@
         ../Deployments/pi3B_rack.nix
         ../Deployments/host_common.nix
       ];
+
+    nixpkgs.crossSystem.system = "aarch64-linux";  # Ensure the right package architecture is used
   };
 
   pi-tri =
     { config, pkgs, lib, ... }:
 
     {
-      #networking.hostName = "pi-tri";      # Define your hostname.
-
       # This value determines the NixOS release with which your system is to be
       # compatible, in order to avoid breaking some software such as database
       # servers. You should change this only after NixOS release notes say you
