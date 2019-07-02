@@ -16,8 +16,16 @@
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
+  # Program defauls for Linode VMs
+  programs.zsh.enable = true;
+  programs.zsh.autosuggestions.enable = true;
+  programs.zsh.ohMyZsh.enable = true;
+
   # List services that you want to enable:
   services.openssh.enable = true; # Enable the OpenSSH daemon.
+
+  # Set the default shell for all users
+  users.defaultUserShell = "/run/current-system/sw/bin/zsh";
 
   # Users common across MIO Ops:
   users.mutableUsers = false;        # Remove any users not defined in here
