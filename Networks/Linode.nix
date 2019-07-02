@@ -1,4 +1,4 @@
-# NixOps configuration for the Raspberry Pi 3B Rack
+# NixOps configuration for the Linode VMs
 
 {
   network = {
@@ -17,6 +17,13 @@
       system = "x86_64-linux";
       config = "x86_64-unknown-linux-gnu";
       allowUnfree = true;
+    };
+
+    # Configure firewall defaults:
+    networking.firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 ];
+      trustedInterfaces = [ "lo" ];
     };
   };
 
