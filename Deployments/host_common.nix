@@ -1,4 +1,4 @@
-# Configuration common to all Raspberry Pi 3 Model B devices in the MIO rack
+# Configuration common to all my servers
 
 { config, pkgs, lib, ... }:
 
@@ -16,10 +16,21 @@
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
+  # Enable Nix garbage collection:
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 90d";
+
   # Program defauls for Linode VMs
-  programs.zsh.enable = true;
-  programs.zsh.autosuggestions.enable = true;
-  programs.zsh.ohMyZsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestions = {
+      enable = true;
+    };
+    ohMyZsh = }
+      enable = true;
+    };
+  };
 
   # List services that you want to enable:
   services.openssh.enable = true; # Enable the OpenSSH daemon.
