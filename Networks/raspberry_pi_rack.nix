@@ -13,7 +13,12 @@
         ../Deployments/host_common.nix
       ];
 
-    nixpkgs.crossSystem.system = "aarch64-linux";  # Ensure the right package architecture is used
+    # Ensure the right package architecture is used
+    nixpkgs.localSystem = {
+      system = "aarch64-linux";
+      config = "aarch64-unknown-linux-gnu";
+      allowUnfree = true;
+    };
   };
 
   pi-tri =
