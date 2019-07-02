@@ -8,6 +8,7 @@
   defaults = {
     imports =
       [
+        ../Hardware/linode_vm.nix
         ../Deployments/host_common.nix
       ];
 
