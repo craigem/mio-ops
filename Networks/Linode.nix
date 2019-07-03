@@ -5,34 +5,39 @@
     description = "Linode servers";
   };
 
-  defaults = {
-    imports =
-      [
-        ../Hardware/linode_vm.nix
-        ../Deployments/host_common.nix
+  defaults =
+    { config, pkgs, lib, ... }:
+
+    {
+      imports =
+        [
+          ../Hardware/linode_vm.nix
+          ../Deployments/host_common.nix
+        ];
+
+      # Ensure the right package architecture is used
+      nixpkgs.localSystem = {
+        system = "x86_64-linux";
+        config = "x86_64-unknown-linux-gnu";
+        allowUnfree = true;
+      };
+
+      # Tools that Linode support like to have install if you need them.
+      environment.systemPackages = with pkgs; [
+        inetutils
+        mtr
+        sysstat
       ];
 
-    # Ensure the right package architecture is used
-    nixpkgs.localSystem = {
-      system = "x86_64-linux";
-      config = "x86_64-unknown-linux-gnu";
-      allowUnfree = true;
-    };
-
-    # Tools that Linode support like to have install if you need them.
-    environment.systemPackages = with pkgs; [
-      inetutils
-      mtr
-      sysstat
-    ];
-
-    # Configure firewall defaults:
-    networking = {
-      usePredictableInterfaces = false; # As per Linode's networking guidlines
-      firewall = {
-        enable = true;
-        allowedTCPPorts = [ 22 ];
-        trustedInterfaces = [ "lo" ];
+      # Configure firewall defaults:
+      networking = {
+        usePredictableInterfaceNames = false; # As per Linode's networking guidlines
+        domain = "mcwhirter.io";
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [  ];
+          trustedInterfaces = [ "lo" ];
+        };
       };
   };
 
