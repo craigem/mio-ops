@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "console-ttyS0,19200n8" ];
+  boot.kernelParams = [ "console=ttyS0,19200n8" ];
   boot.loader = {
     grub = {
       extraConfig = ''
