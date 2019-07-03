@@ -19,12 +19,21 @@
       allowUnfree = true;
     };
 
+    # Tools that Linode support like to have install if you need them.
+    environment.systemPackages = with pkgs; [
+      inetutils
+      mtr
+      sysstat
+    ];
+
     # Configure firewall defaults:
-    networking.firewall = {
-      enable = true;
-      allowedTCPPorts = [ 22 ];
-      trustedInterfaces = [ "lo" ];
-    };
+    networking = {
+      usePredictableInterfaces = false; # As per Linode's networking guidlines
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ 22 ];
+        trustedInterfaces = [ "lo" ];
+      };
   };
 
   cuallaidh =
