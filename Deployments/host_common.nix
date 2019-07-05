@@ -27,6 +27,8 @@
       byobu # text-based window manager and terminal multiplexer.
       htop  # interactive process viewer
       tmux  # Terminal multiplexer required by byobu
+      git   # Distributed version control system
+      powerline-fonts # For zsh themes
     ];
   };
 
@@ -42,6 +44,8 @@
     #'';
     ohMyZsh = {
       enable = true;
+      plugins = [ "git" ];
+      theme = "agnoster";
     };
   };
   programs.mosh = {
