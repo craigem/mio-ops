@@ -38,7 +38,7 @@
     };
     # List of strings concatenated with "\n"
     #loginShellInit = ''
-    #  _byobu_sourced=1 . byobu-tmux 2>/dev/null || true
+    #  _byobu_sourced=1 . byobu 2>/dev/null || true
     #'';
     ohMyZsh = {
       enable = true;
