@@ -44,7 +44,7 @@
     #'';
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [ "git" "tmux" ];
       theme = "agnoster";
     };
   };
