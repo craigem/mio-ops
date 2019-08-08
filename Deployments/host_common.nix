@@ -20,6 +20,7 @@
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 90d";
+  nix.autoOptimiseStore = true;
 
   # Set the system-wide environment
   environment = {
